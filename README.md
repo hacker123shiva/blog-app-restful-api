@@ -1,1 +1,1 @@
-# Restful API for Blod Application using Spring Boot
+# Restful API for Blog Application using Spring Boot
