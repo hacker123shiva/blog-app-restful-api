@@ -1,8 +1,10 @@
 package com.skyline.blog.payloads;
 
 import java.util.Date;
+import java.util.Set;
 
 import com.skyline.blog.entities.Category;
+import com.skyline.blog.entities.Comment;
 import com.skyline.blog.entities.User;
 
  
@@ -16,6 +18,7 @@ import lombok.Setter;
 public class PostDto {
 	
 	private Integer postId;
+	
 	private String title;
 	
 	private String content;
@@ -28,5 +31,6 @@ public class PostDto {
 	
 	private CategoryDto category;
 	
+	private Set<CommentDto> comments;
 	
 }
