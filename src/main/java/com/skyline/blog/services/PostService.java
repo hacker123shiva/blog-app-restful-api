@@ -36,5 +36,5 @@ public interface PostService {
 	 
 	
 	//search post
-	List<PostDto> searchPosts(String keywords);
+	PostResponse searchPosts(String keywords, Integer pageNumber, Integer pageSize, String sortBy, String sortDir);
 }

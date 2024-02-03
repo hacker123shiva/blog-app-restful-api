@@ -22,7 +22,10 @@ public interface PostRepo extends JpaRepository<Post,Integer>{
 	@Query("SELECT p FROM Post p WHERE p.title LIKE %:keyword% OR p.content LIKE %:keyword%")
 	List<Post> findByTitleOrContentContaining(String keyword);
 	
-	 
+	//get content after applying pagination and sorting
+	@Query("SELECT p FROM Post p WHERE p.title LIKE %:keyword% OR p.content LIKE %:keyword%")
+	Page<Post> findByTitleOrContentContaining(String keyword,Pageable p);
+	
 
 	
 }
