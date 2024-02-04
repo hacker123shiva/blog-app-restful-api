@@ -13,7 +13,7 @@ import com.skyline.blog.entities.Post;
 import com.skyline.blog.entities.User;
 
 public interface PostRepo extends JpaRepository<Post,Integer>{
-
+	Page<Post> findAll(Pageable pageable);
 	List<Post> findByUser(User user);
 	List<Post> findByCategory(Category category);
 	Page<Post> findByCategory(Category category,Pageable p);

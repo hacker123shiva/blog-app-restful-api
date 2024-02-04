@@ -81,6 +81,7 @@ public class PostServiceImpl implements PostService{
 		 this.postRepo.delete(post);
 	}
 
+	 
 	@Override
 	public PostResponse getAllPost(Integer pageNumber, Integer pageSize, String sortBy, String sortDir) {
 	 
@@ -108,7 +109,6 @@ public class PostServiceImpl implements PostService{
 		 postResponse.setTotalpages(pagePost.getTotalPages());
 		return postResponse;
 	}
-
 	@Override
 	public PostDto getPostbyId(Integer postId ) {
 
