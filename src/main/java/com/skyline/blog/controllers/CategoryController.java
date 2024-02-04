@@ -2,6 +2,8 @@ package com.skyline.blog.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,7 +19,7 @@ import com.skyline.blog.payloads.ApiResponse;
 import com.skyline.blog.payloads.CategoryDto;
 import com.skyline.blog.services.CategoryService;
 
-import jakarta.validation.Valid;
+ 
 
 @RestController
 @RequestMapping("/api/categories")

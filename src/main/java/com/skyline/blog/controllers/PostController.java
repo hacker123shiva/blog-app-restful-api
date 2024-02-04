@@ -3,7 +3,8 @@ package com.skyline.blog.controllers;
  
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,7 +30,7 @@ import com.skyline.blog.payloads.PostResponse;
 import com.skyline.blog.services.FileService;
 import com.skyline.blog.services.PostService;
 
-import jakarta.servlet.http.HttpServletResponse;
+  
 
 @RestController
 @RequestMapping("/api")

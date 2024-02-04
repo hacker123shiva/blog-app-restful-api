@@ -2,6 +2,8 @@ package com.skyline.blog.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +20,7 @@ import com.skyline.blog.payloads.ApiResponse;
 import com.skyline.blog.payloads.UserDto;
 import com.skyline.blog.services.UserService;
 
-import jakarta.validation.Valid;
+ 
 
 @RestController
 @RequestMapping("/api/users")
