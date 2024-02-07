@@ -26,5 +26,6 @@ public class BlogAppApisApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		 
 		System.out.println(this.passwordEncoder.encode("xyz"));
+		System.out.println(passwordEncoder.matches("xyz", "$2a$12$w6xzpUJdb8378P4m0H4GSu7ZbB2KwTgI.Ej4fcCAWQl.9asvxjPNW"));
 	}
 }
