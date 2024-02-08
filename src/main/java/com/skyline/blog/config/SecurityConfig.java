@@ -26,7 +26,6 @@ public class SecurityConfig   extends WebSecurityConfigurerAdapter {
      .csrf()
      .disable()
      .authorizeHttpRequests()
-//     .antMatchers("/**").permitAll() // Allow all URLs without authentication
      .anyRequest()
      .authenticated()
      .and()
@@ -37,7 +36,6 @@ public class SecurityConfig   extends WebSecurityConfigurerAdapter {
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 	auth.userDetailsService(customUserDetailService).passwordEncoder(passwordEncoder());
 //		auth.userDetailsService(customUserDetailService).passwordEncoder(NoOpPasswordEncoder.getInstance());
-
 	}
 	
 	@Bean
