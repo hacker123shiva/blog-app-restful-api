@@ -1,13 +1,18 @@
 package com.skyline.blog.services.impl;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.skyline.blog.config.AppConstants;
+import com.skyline.blog.dao.RoleRepo;
 import com.skyline.blog.dao.UserRepo;
+import com.skyline.blog.entities.Role;
 import com.skyline.blog.entities.User;
 import com.skyline.blog.exception.ResourceNotFoundException;
 import com.skyline.blog.payloads.UserDto;
@@ -21,6 +26,12 @@ public class UserServicesImpl implements UserService{
 	
 	@Autowired
 	private ModelMapper modelMapper;
+	
+	@Autowired
+	private PasswordEncoder passwordEncode;
+	
+	@Autowired
+	private RoleRepo roleRepo;
 	@Override
 	public UserDto createUser(UserDto userDto) {
 		 User user=this.dtoToUser(userDto);
@@ -73,6 +84,20 @@ public class UserServicesImpl implements UserService{
 		UserDto userDto=this.modelMapper.map(user, UserDto.class);
 		return userDto;
 		
+	}
+
+	public UserDto registerNewUser(UserDto userDto) {
+		 
+		User user=modelMapper.map(userDto, User.class);
+		//encoded the password
+		user.setPassword(this.passwordEncode.encode(user.getPassword()));
+		
+		//roles 
+		Role role=this.roleRepo.findById(AppConstants.NORMAL_USER).get();
+		user.getRoles().add(role);
+		User newUser=this.userRepo.save(user);
+		
+		return modelMapper.map(newUser,UserDto.class);
 	}
 
 }

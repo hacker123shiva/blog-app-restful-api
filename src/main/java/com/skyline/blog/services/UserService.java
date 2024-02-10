@@ -6,6 +6,7 @@ import com.skyline.blog.payloads.UserDto;
 
 public interface UserService {
 
+	public UserDto registerNewUser(UserDto user);
 	public UserDto createUser(UserDto user);
 	public UserDto updateUser(UserDto user, Integer userId);
 	public UserDto getUserById(Integer userId);
