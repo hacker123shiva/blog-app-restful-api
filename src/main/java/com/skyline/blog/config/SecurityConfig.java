@@ -17,6 +17,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import com.skyline.blog.security.CustomUserDetailService;
 import com.skyline.blog.security.JwtAuthenticationEntryPoint;
@@ -24,9 +25,19 @@ import com.skyline.blog.security.JwtAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
+@EnableWebMvc
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig   extends WebSecurityConfigurerAdapter {
 
+	public static final String [] PUBLIC_URLS= {
+			"/api/v1/auth/**",
+			"/v3/api-docs",
+			"/v2/api-docs",
+			"/swagger-resources/**",
+			"/swagger-ui/**",
+			"/webjars/**"
+	};
+	
 	@Autowired
 	private CustomUserDetailService customUserDetailService;
 	
@@ -42,7 +53,7 @@ public class SecurityConfig   extends WebSecurityConfigurerAdapter {
      .csrf()
      .disable()
      .authorizeHttpRequests()
-     .antMatchers("/api/v1/auth/**").permitAll()
+     .antMatchers(PUBLIC_URLS).permitAll()
      .antMatchers(HttpMethod.GET).permitAll()
      .anyRequest()
      .authenticated()

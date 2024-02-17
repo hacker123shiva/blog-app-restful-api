@@ -21,7 +21,7 @@ import com.skyline.blog.security.JwtTokenHelper;
 import com.skyline.blog.services.UserService;
 
 @RestController
-@RequestMapping("/api/v1/auth/")
+@RequestMapping("/api/v1/auth")
 public class AuthController {
 
 	@Autowired
